@@ -10,3 +10,4 @@ pluginManagement {
 rootProject.name = 'utils'
 include 'entities', 'domain', 'main'
 include 'kernelinfo'
+include 'ping'

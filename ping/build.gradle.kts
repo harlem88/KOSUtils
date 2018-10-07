@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
-    application
 }
 
 group = "org.dronix.os"
@@ -17,13 +16,10 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
     api(project(":entities"))
     api(project(":domain"))
-    api(project(":kernelinfo"))
-    api(project(":ping"))
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.30.1-eap13")
+
 }
 
-application {
-    mainClassName = "org.dronix.os.tool.main.MainKt"
-}
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
