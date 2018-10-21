@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+
 plugins {
     kotlin("jvm")
     application
@@ -10,6 +11,7 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     maven { setUrl("http://dl.bintray.com/kotlin/kotlin-eap") }
+    maven { setUrl("https://kotlin.bintray.com/kotlinx") }
     mavenCentral()
 }
 
@@ -19,11 +21,13 @@ dependencies {
     api(project(":domain"))
     api(project(":kernelinfo"))
     api(project(":ping"))
+    api(project(":geoIPapi"))
 }
 
 application {
     mainClassName = "org.dronix.os.tool.main.MainKt"
 }
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
