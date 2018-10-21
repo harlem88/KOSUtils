@@ -14,7 +14,7 @@ class IPifyGeoIPRepository(private val apiKey: String) : GeoIpRepository {
         val result = IPfyRequestHandler.getIp()
         if (result.isNotEmpty()) {
             try {
-                val obj  = JSON.parse(IPModel.serializer(), result)
+                val obj  = JSON.parse<IPModel>(result)
                 ip = IP(obj.ip)
             }catch (e: Exception){
                 e.printStackTrace()
@@ -23,9 +23,9 @@ class IPifyGeoIPRepository(private val apiKey: String) : GeoIpRepository {
         return ip
     }
 
-    override fun getGeoIP(): GeoIp? {
+    override fun getLocationOfIp(ip: String): GeoIp? {
         var geoIP: GeoIp? = null
-        val result = IPfyRequestHandler.getGeoIp(apiKey, "8.8.8.8")
+        val result = IPfyRequestHandler.getGeoIp(apiKey, ip)
         if (result.isNotEmpty()) {
             try {
                 val obj = JSON.parse<GeoIPModel>(result)

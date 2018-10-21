@@ -21,7 +21,6 @@ object IPfyRequestHandler {
         try {
             Scanner(URL(url).openStream())
                 .use { s -> result += s.useDelimiter("\\A").next() }
-            println("IPfyRequestHandler: GET $result")
         } catch (ex: Exception) {
             ex.printStackTrace()
         }

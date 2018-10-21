@@ -6,6 +6,6 @@ import org.dronix.os.util.entitites.IP
 interface GeoIpRepository {
 
     fun getPublicIp(): IP?
-    fun getGeoIP(): GeoIp?
+    fun getLocationOfIp(ip: String): GeoIp?
 
 }

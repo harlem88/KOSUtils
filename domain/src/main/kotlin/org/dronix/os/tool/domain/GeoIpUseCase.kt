@@ -11,8 +11,14 @@ class GeoIpUseCase(
         return ip
     }
 
-    suspend fun getGeoIP(): GeoIp? {
-        val geoIP = geoIp.getGeoIP()
+    suspend fun getLocation(): GeoIp? {
+        var geoIP: GeoIp? = null
+
+        val myIp = geoIp.getPublicIp()
+        if (myIp != null) {
+            geoIP = geoIp.getLocationOfIp(myIp.address)
+        }
+
         return geoIP
     }
 }

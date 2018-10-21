@@ -8,13 +8,23 @@ import org.dronix.os.tool.ping.LinuxPingCommand
 import org.dronix.os.util.geoipapi.IPifyGeoIPRepository
 
 suspend fun main(args: Array<String>) {
+    if (args.isNotEmpty()) {
 
-
-getMyPublicIP()
-
+        when (args[0]) {
+            "public_ip" -> {
+                getMyPublicIP()
+            }
+            "location" -> {
+                if (args.size > 1) getMyLocation(args[1])
+            }
+            else -> {
+                getKernel()
+            }
+        }
+    }
 }
 
-suspend fun getMyPublicIP(){
+suspend fun getMyPublicIP() {
     val geoIpRepository = IPifyGeoIPRepository("")
     val geoIpUseCase = GeoIpUseCase(geoIpRepository)
 
@@ -22,8 +32,15 @@ suspend fun getMyPublicIP(){
     println(ip.toString())
 }
 
+suspend fun getMyLocation(apiKey: String) {
+    val geoIpRepository = IPifyGeoIPRepository(apiKey)
+    val geoIpUseCase = GeoIpUseCase(geoIpRepository)
 
-suspend fun getKernel(){
+    val geoIp = geoIpUseCase.getLocation()
+    println(geoIp.toString())
+}
+
+suspend fun getKernel() {
     val kernelRepository = LinuxKernelRepository()
     val kernelInfoUseCase = KernelInfoUseCase(kernelRepository)
 
@@ -31,7 +48,7 @@ suspend fun getKernel(){
     println(kernelInfo.toString())
 }
 
-suspend fun pingCommand(){
+suspend fun pingCommand() {
     val pingCommand = LinuxPingCommand()
     val pingCommandUsecase = PingUseCase(pingCommand)
     println("START PING")
