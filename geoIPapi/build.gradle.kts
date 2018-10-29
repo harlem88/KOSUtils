@@ -19,10 +19,10 @@ repositories {
 }
 
 dependencies {
-    compile(kotlin("stdlib-jdk8"))
+    api(kotlin("stdlib-jdk8"))
     api(project(":entities"))
-    compile("org.jetbrains.kotlin:kotlin-reflect:1.3.0-rc-190")
-    compile("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.8.3-rc13")
+    api("org.jetbrains.kotlin:kotlin-reflect:1.3.0-rc-190")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.8.3-rc13")
     api(project(":domain"))
 
     testImplementation("junit:junit:4.12")
@@ -31,6 +31,10 @@ dependencies {
 
 }
 
+
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+declareMyJarTask()

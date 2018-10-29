@@ -8,6 +8,7 @@ import org.dronix.os.tool.ping.LinuxPingCommand
 import org.dronix.os.util.geoipapi.IPifyGeoIPRepository
 
 suspend fun main(args: Array<String>) {
+    println("========= INIT ===============")
     if (args.isNotEmpty()) {
 
         when (args[0]) {

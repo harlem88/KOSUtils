@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    api(kotlin("stdlib-jdk8"))
     api(project(":entities"))
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.30.1-eap13")
 
@@ -25,3 +25,5 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+declareMyJarTask()

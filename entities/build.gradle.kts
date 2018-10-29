@@ -13,9 +13,11 @@ repositories {
 }
 
 dependencies {
-    compile(kotlin("stdlib-jdk8"))
+    api(kotlin("stdlib-jdk8"))
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+declareMyJarTask()
