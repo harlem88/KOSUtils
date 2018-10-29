@@ -8,5 +8,5 @@ Run with:
     
 or run with jars:
     
-    ./gradle allJar
+    ./gradlew allJar
      java -cp "build/New_libs/org.dronix.os-main-1.0-SNAPSHOT.jar:./build/New_libs/*" org.dronix.os.tool.main.MainKt
